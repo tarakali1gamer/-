@@ -25,453 +25,161 @@
             --radius-sm: 10px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         body.dark {
-            --bg: #0d1117;
-            --card: #161b22;
-            --text: #e6edf3;
-            --text-muted: #8b949e;
-            --border: #30363d;
+            --bg: #0d1117; --card: #161b22; --text: #e6edf3;
+            --text-muted: #8b949e; --border: #30363d;
             --shadow: 0 8px 30px rgba(0,0,0,0.4);
             --shadow-lg: 0 20px 60px rgba(0,0,0,0.6);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: var(--transition); }
 
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            transition: var(--transition);
-        }
-
-        /* ===== HERO HEADER ===== */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #0a3d5c 100%);
-            padding: 40px 24px 0;
-            position: relative;
-            overflow: hidden;
+            padding: 40px 24px 0; position: relative; overflow: hidden;
         }
-
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -20%;
-            width: 600px;
-            height: 600px;
+            content: ''; position: absolute; top: -50%; left: -20%;
+            width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(0,201,167,0.12) 0%, transparent 70%);
             pointer-events: none;
         }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,209,102,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
         .hero-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            max-width: 1100px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            gap: 16px;
+            display: flex; justify-content: space-between; align-items: flex-start;
+            max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 16px;
         }
-
         .hero-title-block { flex: 1; min-width: 260px; }
-
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0,201,167,0.15);
-            border: 1px solid rgba(0,201,167,0.3);
-            color: var(--accent);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0,201,167,0.15); border: 1px solid rgba(0,201,167,0.3);
+            color: var(--accent); padding: 6px 14px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 600; margin-bottom: 12px;
         }
-
-        .hero-title {
-            font-family: 'Amiri', serif;
-            font-size: clamp(1.6rem, 4vw, 2.6rem);
-            color: #ffffff;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .hero-sub {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-            margin-top: 8px;
-        }
-
-        .hero-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
+        .hero-title { font-family: 'Amiri', serif; font-size: clamp(1.6rem,4vw,2.6rem); color: #fff; font-weight: 700; line-height: 1.3; }
+        .hero-sub { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-top: 8px; }
         .btn-theme {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.08);
-            color: white;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 44px; height: 44px; border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
+            color: white; font-size: 1.1rem; cursor: pointer; transition: var(--transition);
+            display: flex; align-items: center; justify-content: center;
         }
-
         .btn-theme:hover { background: rgba(255,255,255,0.18); transform: scale(1.05); }
 
-        /* ===== USER BAR ===== */
-        .user-bar {
-            max-width: 1100px;
-            margin: 20px auto 0;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+        .user-bar { max-width: 1100px; margin: 20px auto 0; display: flex; gap: 12px; flex-wrap: wrap; }
+        .user-bar input, .user-bar select {
+            flex: 1; min-width: 220px; padding: 13px 18px; border-radius: var(--radius-sm);
+            border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08);
+            color: white; font-family: 'Cairo', sans-serif; font-size: 0.95rem; outline: none; transition: var(--transition);
         }
-
-        .user-bar input,
-        .user-bar select {
-            flex: 1;
-            min-width: 220px;
-            padding: 13px 18px;
-            border-radius: var(--radius-sm);
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.08);
-            color: white;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.95rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
         .user-bar input::placeholder { color: rgba(255,255,255,0.45); }
         .user-bar select option { background: var(--secondary); color: white; }
-        .user-bar input:focus,
-        .user-bar select:focus {
-            border-color: var(--accent);
-            background: rgba(255,255,255,0.12);
-        }
+        .user-bar input:focus, .user-bar select:focus { border-color: var(--accent); background: rgba(255,255,255,0.12); }
 
-        /* ===== WELCOME BANNER ===== */
         .welcome-banner {
-            max-width: 1100px;
-            margin: 16px auto 0;
-            padding: 14px 20px;
-            background: rgba(0,201,167,0.15);
-            border: 1px solid rgba(0,201,167,0.3);
-            border-radius: var(--radius-sm);
-            color: #a8f5e5;
-            font-size: 0.95rem;
-            display: none;
-            animation: slideDown 0.4s ease;
+            max-width: 1100px; margin: 16px auto 0; padding: 14px 20px;
+            background: rgba(0,201,167,0.15); border: 1px solid rgba(0,201,167,0.3);
+            border-radius: var(--radius-sm); color: #a8f5e5; font-size: 0.95rem;
+            display: none; animation: slideDown 0.4s ease;
         }
+        @keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== NAV TABS ===== */
         .nav-tabs {
-            max-width: 1100px;
-            margin: 20px auto 0;
-            display: flex;
-            gap: 4px;
-            overflow-x: auto;
-            padding-bottom: 0;
-            scrollbar-width: none;
+            max-width: 1100px; margin: 20px auto 0; display: flex; gap: 4px;
+            overflow-x: auto; scrollbar-width: none;
         }
-
         .nav-tabs::-webkit-scrollbar { display: none; }
-
         .nav-tab {
-            padding: 12px 22px;
-            border: none;
-            background: rgba(255,255,255,0.06);
-            color: rgba(255,255,255,0.6);
-            font-family: 'Cairo', sans-serif;
-            font-weight: 600;
-            font-size: 0.88rem;
-            cursor: pointer;
+            padding: 12px 22px; border: none; background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.6); font-family: 'Cairo', sans-serif;
+            font-weight: 600; font-size: 0.88rem; cursor: pointer;
             border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-            transition: var(--transition);
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            transition: var(--transition); white-space: nowrap;
+            display: flex; align-items: center; gap: 8px;
         }
-
         .nav-tab:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); }
-
-        .nav-tab.active {
-            background: var(--bg);
-            color: var(--text);
-            border-bottom: 3px solid var(--accent);
-        }
-
+        .nav-tab.active { background: var(--bg); color: var(--text); border-bottom: 3px solid var(--accent); }
         body.dark .nav-tab.active { background: var(--bg); color: var(--text); }
 
-        /* ===== MAIN CONTENT ===== */
-        .main {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 32px 20px 60px;
-        }
-
+        .main { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
         .section { display: none; animation: fadeUp 0.35s ease; }
         .section.active { display: block; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== CARDS ===== */
         .card {
-            background: var(--card);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 28px;
-            margin-bottom: 24px;
-            border: 1px solid var(--border);
-            transition: var(--transition);
+            background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+            padding: 28px; margin-bottom: 24px; border: 1px solid var(--border); transition: var(--transition);
         }
-
         .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px; margin-bottom: 20px;
+            padding-bottom: 16px; border-bottom: 1px solid var(--border);
         }
+        .card-title { font-size: 1.1rem; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 10px; }
+        .card-title-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
 
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-title-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-
-        /* ===== GUIDE SECTION ===== */
+        /* GUIDE */
         .guide-hero {
-            background: linear-gradient(135deg, #0f2027, #1a3a4a);
-            border-radius: var(--radius);
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 24px;
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, #0f2027, #1a3a4a); border-radius: var(--radius);
+            padding: 40px; text-align: center; margin-bottom: 24px; position: relative; overflow: hidden;
         }
-
-        .guide-hero::before {
-            content: '🦏';
-            position: absolute;
-            font-size: 120px;
-            opacity: 0.06;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .guide-hero h1 {
-            font-family: 'Amiri', serif;
-            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-            color: white;
-            margin-bottom: 10px;
-        }
-
+        .guide-hero::before { content: '🦏'; position: absolute; font-size: 120px; opacity: 0.06; top: -20px; left: 50%; transform: translateX(-50%); }
+        .guide-hero h1 { font-family: 'Amiri', serif; font-size: clamp(1.5rem,3.5vw,2.2rem); color: white; margin-bottom: 10px; }
         .guide-hero p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-        }
-
-        .info-card {
-            padding: 20px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            background: var(--card);
-        }
-
-        .info-card-icon {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 16px; }
+        .info-card { padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--card); }
+        .info-card-icon { font-size: 1.6rem; margin-bottom: 10px; }
         .info-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
         .info-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* ===== STEPS SECTION ===== */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
+        /* STEPS */
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px,1fr)); gap: 8px; margin-bottom: 24px; }
         .step-btn {
-            padding: 10px 6px;
-            background: var(--card);
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            color: var(--text-muted);
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 600;
-            text-align: center;
-            transition: var(--transition);
+            padding: 10px 6px; background: var(--card); border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm); cursor: pointer; color: var(--text-muted);
+            font-family: 'Cairo', sans-serif; font-size: 0.82rem; font-weight: 600;
+            text-align: center; transition: var(--transition);
         }
-
         .step-btn:hover { border-color: var(--accent); color: var(--text); }
         .step-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-
-        .field-label {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-
+        .field-label { font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
         .field-input {
-            width: 100%;
-            padding: 13px 16px;
-            border-radius: var(--radius-sm);
-            border: 1.5px solid var(--border);
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.95rem;
-            outline: none;
-            transition: var(--transition);
-            margin-bottom: 14px;
+            width: 100%; padding: 13px 16px; border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border); background: var(--bg); color: var(--text);
+            font-family: 'Cairo', sans-serif; font-size: 0.95rem; outline: none;
+            transition: var(--transition); margin-bottom: 14px;
         }
-
         .field-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,201,167,0.12); }
+        textarea.field-input { min-height: 350px; resize: vertical; line-height: 1.7; }
 
-        textarea.field-input {
-            min-height: 350px;
-            resize: vertical;
-            line-height: 1.7;
-        }
-
-        /* ===== TABLE SECTION ===== */
+        /* TABLES */
         .table-section { margin-bottom: 32px; }
-
-        .table-section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .table-label {
-            font-size: 1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        .table-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .table-label { font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
         .table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--border); }
-
         table { width: 100%; border-collapse: collapse; min-width: 500px; }
-
         th {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: rgba(255,255,255,0.9);
-            padding: 12px 16px;
-            text-align: right;
-            font-size: 0.82rem;
-            font-weight: 700;
-            white-space: nowrap;
+            color: rgba(255,255,255,0.9); padding: 12px 16px; text-align: right;
+            font-size: 0.82rem; font-weight: 700; white-space: nowrap;
         }
-
-        td {
-            border-bottom: 1px solid var(--border);
-            padding: 4px;
-            vertical-align: top;
-        }
-
+        td { border-bottom: 1px solid var(--border); padding: 4px; vertical-align: top; }
         tr:last-child td { border-bottom: none; }
-
         tbody tr:hover { background: rgba(0,201,167,0.03); }
-
         td textarea {
-            width: 100%;
-            min-height: 60px;
-            border: none;
-            background: transparent;
-            color: var(--text);
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.88rem;
-            padding: 10px 12px;
-            resize: none;
-            outline: none;
-            line-height: 1.6;
+            width: 100%; min-height: 60px; border: none; background: transparent;
+            color: var(--text); font-family: 'Cairo', sans-serif; font-size: 0.88rem;
+            padding: 10px 12px; resize: none; outline: none; line-height: 1.6;
         }
-
         td textarea:focus { background: rgba(0,201,167,0.05); }
 
-        /* ===== BUTTONS ===== */
+        /* BUTTONS */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: none;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+            border-radius: 50px; border: none; font-family: 'Cairo', sans-serif;
+            font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: var(--transition); text-decoration: none;
         }
-
         .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .btn:active { transform: translateY(0); }
-
         .btn-primary { background: var(--accent); color: #0d1117; }
         .btn-info { background: var(--info); color: white; }
         .btn-danger { background: var(--danger); color: white; }
@@ -479,122 +187,151 @@
         .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
         .btn-sm { padding: 7px 14px; font-size: 0.8rem; }
 
-        /* ===== NIGHTLY SECTION ===== */
+        /* NIGHTLY */
         .timer-alert {
-            display: none;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 20px;
-            background: rgba(239,71,111,0.1);
-            border: 1px solid rgba(239,71,111,0.3);
-            border-radius: var(--radius-sm);
-            color: var(--danger);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 20px;
+            display: none; align-items: center; gap: 12px; padding: 14px 20px;
+            background: rgba(239,71,111,0.1); border: 1px solid rgba(239,71,111,0.3);
+            border-radius: var(--radius-sm); color: var(--danger); font-size: 0.9rem; font-weight: 600; margin-bottom: 20px;
         }
-
-        .question-block {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
-        }
-
+        .question-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
         .question-block:last-of-type { border-bottom: none; }
-
-        .question-label {
-            font-weight: 700;
-            font-size: 0.92rem;
-            color: var(--text);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            line-height: 1.5;
-        }
-
+        .question-label { font-weight: 700; font-size: 0.92rem; color: var(--text); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
         .q-num {
-            min-width: 28px;
-            height: 28px;
-            background: var(--accent);
-            color: #0d1117;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.78rem;
-            font-weight: 900;
-            flex-shrink: 0;
-            margin-top: 1px;
+            min-width: 28px; height: 28px; background: var(--accent); color: #0d1117;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 0.78rem; font-weight: 900; flex-shrink: 0; margin-top: 1px;
         }
-
         textarea.q-input {
-            width: 100%;
-            min-height: 80px;
-            padding: 13px 16px;
-            border-radius: var(--radius-sm);
-            border: 1.5px solid var(--border);
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.9rem;
-            resize: vertical;
-            outline: none;
-            transition: var(--transition);
-            line-height: 1.7;
+            width: 100%; min-height: 80px; padding: 13px 16px; border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border); background: var(--bg); color: var(--text);
+            font-family: 'Cairo', sans-serif; font-size: 0.9rem; resize: vertical; outline: none;
+            transition: var(--transition); line-height: 1.7;
+        }
+        textarea.q-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,201,167,0.1); }
+
+        /* ===== SPEAKERS SECTION ===== */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 8px;
         }
 
-        textarea.q-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(0,201,167,0.1);
-        }
-
-        /* ===== STATUS BAR ===== */
-        .status-toast {
-            position: fixed;
-            bottom: 24px;
-            left: 24px;
-            background: var(--secondary);
-            color: rgba(255,255,255,0.85);
-            padding: 10px 18px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: var(--shadow);
-            z-index: 9999;
+        .speaker-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 20px;
             display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: toastIn 0.3s ease;
-            transition: opacity 0.4s ease;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+        .speaker-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+
+        .speaker-avatar {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--info));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: 900; color: #fff;
+            margin-bottom: 4px; flex-shrink: 0;
         }
 
-        @keyframes toastIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .speaker-name { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+        .speaker-years {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0,201,167,0.1); border: 1px solid rgba(0,201,167,0.2);
+            color: var(--accent); border-radius: 50px; padding: 3px 12px; font-size: 0.8rem; font-weight: 700;
+        }
+        .speaker-note { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+        .speaker-contact {
+            font-size: 0.82rem; color: var(--info); font-weight: 600;
+            word-break: break-all;
         }
 
+        /* Admin delete btn — only shown when admin */
+        .speaker-delete {
+            position: absolute; top: 12px; left: 12px;
+            width: 28px; height: 28px; border-radius: 50%;
+            background: rgba(239,71,111,0.1); border: 1px solid rgba(239,71,111,0.25);
+            color: var(--danger); font-size: 0.75rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .speaker-delete:hover { background: var(--danger); color: white; }
+
+        /* Lock overlay */
+        .admin-lock {
+            background: rgba(0,201,167,0.06);
+            border: 1.5px dashed rgba(0,201,167,0.3);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .admin-lock p { color: var(--text-muted); margin-bottom: 16px; font-size: 0.95rem; }
+        .lock-input-wrap { display: flex; gap: 10px; max-width: 360px; margin: 0 auto; }
+        .lock-input {
+            flex: 1; padding: 11px 16px; border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border); background: var(--bg); color: var(--text);
+            font-family: 'Cairo', sans-serif; font-size: 0.95rem; outline: none; transition: var(--transition);
+        }
+        .lock-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,201,167,0.12); }
+        .lock-error { color: var(--danger); font-size: 0.82rem; margin-top: 8px; display: none; }
+
+        /* Add speaker form */
+        .add-speaker-form {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .add-speaker-form.open { display: grid; }
+        .add-speaker-form .full { grid-column: 1 / -1; }
+
+        .form-field { display: flex; flex-direction: column; gap: 5px; }
+        .form-field label { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-field input, .form-field textarea {
+            padding: 11px 14px; border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border); background: var(--bg); color: var(--text);
+            font-family: 'Cairo', sans-serif; font-size: 0.92rem; outline: none; transition: var(--transition);
+        }
+        .form-field input:focus, .form-field textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,201,167,0.1); }
+        .form-field textarea { min-height: 70px; resize: vertical; line-height: 1.6; }
+
+        .no-speakers {
+            text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 0.95rem;
+        }
+        .no-speakers .ns-icon { font-size: 3rem; margin-bottom: 12px; }
+
+        /* TOAST */
+        .status-toast {
+            position: fixed; bottom: 24px; left: 24px;
+            background: var(--secondary); color: rgba(255,255,255,0.85);
+            padding: 10px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.1); box-shadow: var(--shadow);
+            z-index: 9999; display: flex; align-items: center; gap: 8px;
+            animation: toastIn 0.3s ease; transition: opacity 0.4s ease;
+        }
+        @keyframes toastIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
 
-        /* ===== UTILITIES ===== */
         .hidden { display: none !important; }
-        .mt-16 { margin-top: 16px; }
-        .flex-end { display: flex; justify-content: flex-end; }
         .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 600px) {
             .hero { padding: 24px 16px 0; }
             .main { padding: 20px 14px 60px; }
             .card { padding: 18px; }
-            .guide-hero { padding: 26px 20px; }
+            .add-speaker-form { grid-template-columns: 1fr; }
+            .add-speaker-form .full { grid-column: 1; }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== HERO HEADER ===== -->
 <header class="hero">
     <div class="hero-top">
         <div class="hero-title-block">
@@ -602,8 +339,8 @@
             <h1 class="hero-title">منصة وحيد القرن الأبيض العربي</h1>
             <p class="hero-sub">المنهج المتكامل: جرد الماضي (رابعة) وصيانة الحاضر (الليلة)</p>
         </div>
-        <div class="hero-controls">
-            <button class="btn-theme" onclick="toggleTheme()" title="تبديل المظهر">🌗</button>
+        <div style="display:flex;align-items:center;gap:10px;">
+            <button class="btn-theme" onclick="toggleTheme()">🌗</button>
         </div>
     </div>
 
@@ -623,10 +360,10 @@
         <button class="nav-tab" onclick="showSection('steps')" id="nav-steps">🦏 الخطوات الـ 12</button>
         <button class="nav-tab" onclick="showSection('inventory')" id="nav-inventory">📝 جرد رابعة</button>
         <button class="nav-tab" onclick="showSection('nightly')" id="nav-nightly">🌙 مراجعة الليلة</button>
+        <button class="nav-tab" onclick="showSection('speakers')" id="nav-speakers">🎙️ المتحدثون</button>
     </nav>
 </header>
 
-<!-- ===== MAIN CONTENT ===== -->
 <main class="main">
 
     <!-- GUIDE -->
@@ -635,28 +372,11 @@
             <h1>دليل وحيد القرن الأبيض العربي</h1>
             <p>طريق التعافي الحقيقي يبدأ بالصدق مع النفس</p>
         </div>
-
         <div class="info-grid">
-            <div class="info-card">
-                <div class="info-card-icon">✍️</div>
-                <h4>الوضوح والصدق</h4>
-                <p>اكتب الأسماء والمواقف بصدق تام. الكتابة هي مرآة الروح ومفتاح التحرر الحقيقي.</p>
-            </div>
-            <div class="info-card">
-                <div class="info-card-icon">🔒</div>
-                <h4>الخصوصية التامة</h4>
-                <p>بياناتك تُحفظ محلياً على جهازك فقط. لا يصل إليها أحد دون إذنك المباشر.</p>
-            </div>
-            <div class="info-card">
-                <div class="info-card-icon">📤</div>
-                <h4>المشاركة مع المشرف</h4>
-                <p>استخدم أزرار المشاركة لإرسال عملك لمشرفك عند الانتهاء من كل مرحلة.</p>
-            </div>
-            <div class="info-card">
-                <div class="info-card-icon">🌙</div>
-                <h4>مراجعة الليلة</h4>
-                <p>تُمسح إجابات المراجعة تلقائياً بعد ساعتين لضمان خصوصيتك ونظافة تجربتك.</p>
-            </div>
+            <div class="info-card"><div class="info-card-icon">✍️</div><h4>الوضوح والصدق</h4><p>اكتب الأسماء والمواقف بصدق تام. الكتابة هي مرآة الروح ومفتاح التحرر الحقيقي.</p></div>
+            <div class="info-card"><div class="info-card-icon">🔒</div><h4>الخصوصية التامة</h4><p>بياناتك تُحفظ محلياً على جهازك فقط. لا يصل إليها أحد دون إذنك المباشر.</p></div>
+            <div class="info-card"><div class="info-card-icon">📤</div><h4>المشاركة مع المشرف</h4><p>استخدم أزرار المشاركة لإرسال عملك لمشرفك عند الانتهاء من كل مرحلة.</p></div>
+            <div class="info-card"><div class="info-card-icon">🌙</div><h4>مراجعة الليلة</h4><p>تُمسح إجابات المراجعة تلقائياً بعد ساعتين لضمان خصوصيتك ونظافة تجربتك.</p></div>
         </div>
     </div>
 
@@ -664,10 +384,7 @@
     <div id="section-steps" class="section">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">
-                    <div class="card-title-icon" style="background: rgba(0,201,167,0.1); color: var(--accent);">🦏</div>
-                    العمل على الخطوات الـ 12
-                </div>
+                <div class="card-title"><div class="card-title-icon" style="background:rgba(0,201,167,0.1);color:var(--accent);">🦏</div>العمل على الخطوات الـ 12</div>
             </div>
             <div class="steps-grid" id="stepsMenu"></div>
             <div>
@@ -683,129 +400,138 @@
     <div id="section-inventory" class="section">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">
-                    <div class="card-title-icon" style="background: rgba(239,71,111,0.1); color: var(--danger);">📝</div>
-                    جرد رابعة: تحليل الماضي
-                </div>
+                <div class="card-title"><div class="card-title-icon" style="background:rgba(239,71,111,0.1);color:var(--danger);">📝</div>جرد رابعة: تحليل الماضي</div>
                 <button class="btn btn-info btn-sm" onclick="shareInventory()">📤 مشاركة الجرد كاملاً</button>
             </div>
-
-            <!-- Resentment -->
             <div class="table-section">
-                <div class="table-section-header">
-                    <div class="table-label">🔴 جدول الاستياء (Resentment)</div>
-                    <button class="btn btn-primary btn-sm" onclick="addRow('res-table', 4)">+ إضافة سطر</button>
-                </div>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>الطرف</th><th>الموقف</th><th>الأثر</th><th>دوري</th></tr></thead>
-                        <tbody id="res-table"></tbody>
-                    </table>
-                </div>
+                <div class="table-section-header"><div class="table-label">🔴 جدول الاستياء (Resentment)</div><button class="btn btn-primary btn-sm" onclick="addRow('res-table',4)">+ إضافة سطر</button></div>
+                <div class="table-wrap"><table><thead><tr><th>الطرف</th><th>الموقف</th><th>الأثر</th><th>دوري</th></tr></thead><tbody id="res-table"></tbody></table></div>
             </div>
-
-            <!-- Fears -->
             <div class="table-section">
-                <div class="table-section-header">
-                    <div class="table-label">🌑 جدول المخاوف (Fears)</div>
-                    <button class="btn btn-primary btn-sm" onclick="addRow('fear-table', 2)">+ إضافة سطر</button>
-                </div>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>ما هو الخوف؟</th><th>لماذا أشعر به؟ (السبب الكامن)</th></tr></thead>
-                        <tbody id="fear-table"></tbody>
-                    </table>
-                </div>
+                <div class="table-section-header"><div class="table-label">🌑 جدول المخاوف (Fears)</div><button class="btn btn-primary btn-sm" onclick="addRow('fear-table',2)">+ إضافة سطر</button></div>
+                <div class="table-wrap"><table><thead><tr><th>ما هو الخوف؟</th><th>لماذا أشعر به؟</th></tr></thead><tbody id="fear-table"></tbody></table></div>
             </div>
-
-            <!-- Sexual Harm -->
             <div class="table-section">
-                <div class="table-section-header">
-                    <div class="table-label">💎 جرد الأذى الجنسي (Sexual Harm)</div>
-                    <button class="btn btn-primary btn-sm" onclick="addRow('sex-table', 4)">+ إضافة سطر</button>
-                </div>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>أشخاص</th><th>موقف</th><th>أثر / عيوب</th><th>الإصلاح المستقبلي</th></tr></thead>
-                        <tbody id="sex-table"></tbody>
-                    </table>
-                </div>
+                <div class="table-section-header"><div class="table-label">💎 جرد الأذى الجنسي (Sexual Harm)</div><button class="btn btn-primary btn-sm" onclick="addRow('sex-table',4)">+ إضافة سطر</button></div>
+                <div class="table-wrap"><table><thead><tr><th>أشخاص</th><th>موقف</th><th>أثر / عيوب</th><th>الإصلاح المستقبلي</th></tr></thead><tbody id="sex-table"></tbody></table></div>
             </div>
-
-            <!-- Harmful Behavior -->
             <div class="table-section">
-                <div class="table-section-header">
-                    <div class="table-label">⚠️ جرد السلوك المؤذي (Harmful Behavior)</div>
-                    <button class="btn btn-primary btn-sm" onclick="addRow('harm-table', 4)">+ إضافة سطر</button>
-                </div>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>الشخص</th><th>الفعل المؤذي</th><th>الأثر</th><th>التعويضات</th></tr></thead>
-                        <tbody id="harm-table"></tbody>
-                    </table>
-                </div>
+                <div class="table-section-header"><div class="table-label">⚠️ جرد السلوك المؤذي (Harmful Behavior)</div><button class="btn btn-primary btn-sm" onclick="addRow('harm-table',4)">+ إضافة سطر</button></div>
+                <div class="table-wrap"><table><thead><tr><th>الشخص</th><th>الفعل المؤذي</th><th>الأثر</th><th>التعويضات</th></tr></thead><tbody id="harm-table"></tbody></table></div>
             </div>
         </div>
     </div>
 
     <!-- NIGHTLY -->
     <div id="section-nightly" class="section">
-        <div id="timer-alert" class="timer-alert">
-            <span>⏱</span>
-            <span>سيتم مسح الإجابات تلقائياً بعد ساعتين لحماية خصوصيتك.</span>
-        </div>
-
+        <div id="timer-alert" class="timer-alert"><span>⏱</span><span>سيتم مسح الإجابات تلقائياً بعد ساعتين لحماية خصوصيتك.</span></div>
         <div class="card">
             <div class="card-header">
-                <div class="card-title">
-                    <div class="card-title-icon" style="background: rgba(17,138,178,0.1); color: var(--info);">🌙</div>
-                    مراجعة الليلة البنّاءة
-                </div>
-                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <div class="card-title"><div class="card-title-icon" style="background:rgba(17,138,178,0.1);color:var(--info);">🌙</div>مراجعة الليلة البنّاءة</div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
                     <button class="btn btn-info btn-sm" onclick="shareNightly()">📤 مشاركة المراجعة</button>
                     <button class="btn btn-danger btn-sm" onclick="clearNightly()">🗑️ مسح الآن</button>
                 </div>
             </div>
+            <div class="question-block"><div class="question-label"><span class="q-num">1</span>هل كنا مستائين، أو أنانيين، أو غير مخلصين، أو خائفين؟</div><textarea class="q-input" id="q1" oninput="nightlyActivity()"></textarea></div>
+            <div class="question-block"><div class="question-label"><span class="q-num">2</span>هل نحن مدينون باعتذار؟</div><textarea class="q-input" id="q2" oninput="nightlyActivity()"></textarea></div>
+            <div class="question-block"><div class="question-label"><span class="q-num">3</span>هل احتفظنا بشيء لأنفسنا كان يجب مناقشته مع شخص آخر فوراً؟</div><textarea class="q-input" id="q3" oninput="nightlyActivity()"></textarea></div>
+            <div class="question-block"><div class="question-label"><span class="q-num">4</span>هل كنا عطوفين ومحبين تجاه الجميع؟</div><textarea class="q-input" id="q4" oninput="nightlyActivity()"></textarea></div>
+            <div class="question-block"><div class="question-label"><span class="q-num">5</span>ما الذي كان يمكننا فعله بشكل أفضل؟</div><textarea class="q-input" id="q5" oninput="nightlyActivity()"></textarea></div>
+            <div class="question-block" style="border-bottom:none;margin-bottom:0;padding-bottom:0;"><div class="question-label"><span class="q-num">6</span>هل كنا نفكر في أنفسنا معظم الوقت؟ أم فيما يمكننا تقديمه للآخرين؟</div><textarea class="q-input" id="q6" oninput="nightlyActivity()"></textarea></div>
+        </div>
+    </div>
 
-            <div class="question-block">
-                <div class="question-label"><span class="q-num">1</span>هل كنا مستائين، أو أنانيين، أو غير مخلصين، أو خائفين؟</div>
-                <textarea class="q-input" id="q1" oninput="nightlyActivity()"></textarea>
+    <!-- ===== SPEAKERS ===== -->
+    <div id="section-speakers" class="section">
+
+        <!-- PUBLIC VIEW: list of speakers (always visible) -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <div class="card-title-icon" style="background:rgba(255,209,102,0.12);color:var(--accent2);">🎙️</div>
+                    المتحدثون في البرنامج
+                </div>
+                <span id="speakers-count" style="font-size:0.82rem;color:var(--text-muted);font-weight:600;"></span>
             </div>
-            <div class="question-block">
-                <div class="question-label"><span class="q-num">2</span>هل نحن مدينون باعتذار؟</div>
-                <textarea class="q-input" id="q2" oninput="nightlyActivity()"></textarea>
-            </div>
-            <div class="question-block">
-                <div class="question-label"><span class="q-num">3</span>هل احتفظنا بشيء لأنفسنا كان يجب مناقشته مع شخص آخر فوراً؟</div>
-                <textarea class="q-input" id="q3" oninput="nightlyActivity()"></textarea>
-            </div>
-            <div class="question-block">
-                <div class="question-label"><span class="q-num">4</span>هل كنا عطوفين ومحبين تجاه الجميع؟</div>
-                <textarea class="q-input" id="q4" oninput="nightlyActivity()"></textarea>
-            </div>
-            <div class="question-block">
-                <div class="question-label"><span class="q-num">5</span>ما الذي كان يمكننا فعله بشكل أفضل؟</div>
-                <textarea class="q-input" id="q5" oninput="nightlyActivity()"></textarea>
-            </div>
-            <div class="question-block" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
-                <div class="question-label"><span class="q-num">6</span>هل كنا نفكر في أنفسنا معظم الوقت؟ أم فيما يمكننا تقديمه للآخرين؟</div>
-                <textarea class="q-input" id="q6" oninput="nightlyActivity()"></textarea>
+            <div id="speakers-list" class="speakers-grid"></div>
+            <div id="no-speakers" class="no-speakers hidden">
+                <div class="ns-icon">🎙️</div>
+                <p>لا يوجد متحدثون مضافون بعد.</p>
             </div>
         </div>
+
+        <!-- ADMIN PANEL -->
+        <div class="card" id="admin-panel">
+            <div class="card-header">
+                <div class="card-title">
+                    <div class="card-title-icon" style="background:rgba(239,71,111,0.1);color:var(--danger);">🔐</div>
+                    لوحة المشرف — إضافة متحدث
+                </div>
+                <button class="btn btn-danger btn-sm" id="logout-btn" onclick="adminLogout()" style="display:none;">🚪 خروج</button>
+            </div>
+
+            <!-- Lock screen -->
+            <div class="admin-lock" id="admin-lock">
+                <p>🔒 هذا القسم للمشرف فقط. أدخل كلمة المرور للمتابعة.</p>
+                <div class="lock-input-wrap">
+                    <input type="password" class="lock-input" id="admin-pass-input" placeholder="كلمة المرور..." onkeydown="if(event.key==='Enter') checkAdminPass()">
+                    <button class="btn btn-primary" onclick="checkAdminPass()">دخول</button>
+                </div>
+                <p class="lock-error" id="lock-error">❌ كلمة المرور غير صحيحة</p>
+            </div>
+
+            <!-- Admin form (hidden until unlocked) -->
+            <div id="admin-content" style="display:none;">
+                <button class="btn btn-primary btn-sm" style="margin-bottom:16px;" onclick="toggleAddForm()">➕ إضافة متحدث جديد</button>
+
+                <div class="add-speaker-form" id="add-form">
+                    <div class="form-field">
+                        <label>الاسم *</label>
+                        <input type="text" id="sp-name" placeholder="اسم المتحدث...">
+                    </div>
+                    <div class="form-field">
+                        <label>سنوات الرصانة</label>
+                        <input type="text" id="sp-years" placeholder="مثال: ١٥ سنة">
+                    </div>
+                    <div class="form-field">
+                        <label>وسيلة التواصل</label>
+                        <input type="text" id="sp-contact" placeholder="رقم أو إيميل أو واتساب...">
+                    </div>
+                    <div class="form-field">
+                        <label>المنطقة / المدينة</label>
+                        <input type="text" id="sp-city" placeholder="القاهرة، دبي...">
+                    </div>
+                    <div class="form-field full">
+                        <label>ملاحظة مختصرة</label>
+                        <textarea id="sp-note" placeholder="شيء مميز عن هذا المتحدث..."></textarea>
+                    </div>
+                    <div class="full" style="display:flex;gap:10px;justify-content:flex-end;">
+                        <button class="btn btn-ghost btn-sm" onclick="toggleAddForm()">إلغاء</button>
+                        <button class="btn btn-primary" onclick="saveSpeaker()">💾 حفظ المتحدث</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </main>
 
-<!-- STATUS TOAST -->
 <div id="status-toast" class="status-toast hidden">
     <span class="dot"></span>
     <span id="status-text">تم الحفظ</span>
 </div>
 
 <script>
+    // ===== CONFIG =====
+    // غيّر الباسورد من هنا فقط 👇
+    const ADMIN_PASSWORD = 'rhino2024';
+
     let currentStep = 1;
     const EXPIRY_TIME = 2 * 60 * 60 * 1000;
     let toastTimer;
+    let isAdmin = false;
 
     // ===== USER INFO =====
     function saveUserInfo() {
@@ -813,12 +539,10 @@
         updateWelcomeText();
         showToast('تم الحفظ التلقائي ✅');
     }
-
     function handleRoleChange() {
         localStorage.setItem('rhino-user-role', document.getElementById('user-role').value);
         updateWelcomeText();
     }
-
     function updateWelcomeText() {
         const name = document.getElementById('user-name').value || 'يا بطل';
         const role = document.getElementById('user-role').value;
@@ -826,19 +550,17 @@
         if (role) {
             banner.innerHTML = `✨ أهلاً بك يا <strong>${name}</strong> بصفتك <strong>${role}</strong> في طريق التعافي.`;
             banner.style.display = 'block';
-        } else {
-            banner.style.display = 'none';
-        }
+        } else { banner.style.display = 'none'; }
     }
 
-    // ===== NAVIGATION =====
+    // ===== NAV =====
     function showSection(id) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
         document.getElementById('section-' + id).classList.add('active');
         document.getElementById('nav-' + id).classList.add('active');
+        if (id === 'speakers') renderSpeakers();
     }
-
     function toggleTheme() {
         document.body.classList.toggle('dark');
         localStorage.setItem('rhino-theme', document.body.classList.contains('dark'));
@@ -850,21 +572,18 @@
         menu.innerHTML = '';
         for (let i = 1; i <= 12; i++) {
             const b = document.createElement('button');
-            b.className = 'step-btn';
-            b.innerText = 'الخطوة ' + i;
+            b.className = 'step-btn'; b.innerText = 'الخطوة ' + i;
             b.onclick = () => loadStep(i);
             menu.appendChild(b);
         }
         loadStep(1);
     }
-
     function loadStep(n) {
         currentStep = n;
         document.querySelectorAll('.step-btn').forEach((b, i) => b.classList.toggle('active', i === n - 1));
         document.getElementById('step-title').value = localStorage.getItem(`step-t-${n}`) || '';
         document.getElementById('step-body').value = localStorage.getItem(`step-b-${n}`) || '';
     }
-
     function saveStepsData() {
         localStorage.setItem(`step-t-${currentStep}`, document.getElementById('step-title').value);
         localStorage.setItem(`step-b-${currentStep}`, document.getElementById('step-body').value);
@@ -878,18 +597,13 @@
         for (let i = 0; i < cols; i++) {
             const td = document.createElement('td');
             const ta = document.createElement('textarea');
-            ta.value = values[i] || '';
-            ta.placeholder = '...';
-            ta.oninput = saveInventory;
-            td.appendChild(ta);
-            tr.appendChild(td);
+            ta.value = values[i] || ''; ta.placeholder = '...'; ta.oninput = saveInventory;
+            td.appendChild(ta); tr.appendChild(td);
         }
-        tbody.appendChild(tr);
-        saveInventory();
+        tbody.appendChild(tr); saveInventory();
     }
-
     function saveInventory() {
-        const tables = ['res-table', 'fear-table', 'sex-table', 'harm-table'];
+        const tables = ['res-table','fear-table','sex-table','harm-table'];
         const data = {};
         tables.forEach(id => {
             const rows = [];
@@ -912,23 +626,117 @@
         document.getElementById('timer-alert').style.display = 'flex';
         showToast('تم الحفظ التلقائي ✅');
     }
-
     function clearNightly() {
         if (!confirm('سيتم مسح مراجعة الليلة تماماً، هل أنت متأكد؟')) return;
-        localStorage.removeItem('rhino-nightly-data');
-        localStorage.removeItem('nightly-start');
+        localStorage.removeItem('rhino-nightly-data'); localStorage.removeItem('nightly-start');
         for (let i = 1; i <= 6; i++) document.getElementById('q' + i).value = '';
         document.getElementById('timer-alert').style.display = 'none';
         showToast('تم مسح المراجعة 🗑️');
     }
-
     function checkExpiry() {
         const start = localStorage.getItem('nightly-start');
         if (start && Date.now() - start > EXPIRY_TIME) {
-            localStorage.removeItem('rhino-nightly-data');
-            localStorage.removeItem('nightly-start');
+            localStorage.removeItem('rhino-nightly-data'); localStorage.removeItem('nightly-start');
             location.reload();
         }
+    }
+
+    // ===== SPEAKERS =====
+    function getSpeakers() {
+        return JSON.parse(localStorage.getItem('rhino-speakers-v1') || '[]');
+    }
+    function saveSpeakers(list) {
+        localStorage.setItem('rhino-speakers-v1', JSON.stringify(list));
+    }
+
+    function renderSpeakers() {
+        const list = getSpeakers();
+        const container = document.getElementById('speakers-list');
+        const noEl = document.getElementById('no-speakers');
+        const countEl = document.getElementById('speakers-count');
+        container.innerHTML = '';
+
+        if (list.length === 0) {
+            noEl.classList.remove('hidden');
+            countEl.textContent = '';
+        } else {
+            noEl.classList.add('hidden');
+            countEl.textContent = `${list.length} متحدث`;
+            list.forEach((sp, idx) => {
+                const initials = sp.name ? sp.name.trim()[0] : '؟';
+                const card = document.createElement('div');
+                card.className = 'speaker-card';
+                card.innerHTML = `
+                    ${isAdmin ? `<button class="speaker-delete" onclick="deleteSpeaker(${idx})" title="حذف">✕</button>` : ''}
+                    <div class="speaker-avatar">${initials}</div>
+                    <div class="speaker-name">${sp.name}</div>
+                    ${sp.years ? `<span class="speaker-years">⭐ ${sp.years}</span>` : ''}
+                    ${sp.city ? `<div style="font-size:0.8rem;color:var(--text-muted);">📍 ${sp.city}</div>` : ''}
+                    ${sp.note ? `<div class="speaker-note">${sp.note}</div>` : ''}
+                    ${sp.contact ? `<div class="speaker-contact">📞 ${sp.contact}</div>` : ''}
+                `;
+                container.appendChild(card);
+            });
+        }
+    }
+
+    function saveSpeaker() {
+        const name = document.getElementById('sp-name').value.trim();
+        if (!name) { showToast('❌ الاسم مطلوب'); return; }
+        const sp = {
+            name,
+            years:   document.getElementById('sp-years').value.trim(),
+            contact: document.getElementById('sp-contact').value.trim(),
+            city:    document.getElementById('sp-city').value.trim(),
+            note:    document.getElementById('sp-note').value.trim(),
+        };
+        const list = getSpeakers();
+        list.push(sp);
+        saveSpeakers(list);
+        // clear form
+        ['sp-name','sp-years','sp-contact','sp-city','sp-note'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('add-form').classList.remove('open');
+        renderSpeakers();
+        showToast('تم إضافة المتحدث ✅');
+    }
+
+    function deleteSpeaker(idx) {
+        if (!confirm('حذف هذا المتحدث؟')) return;
+        const list = getSpeakers();
+        list.splice(idx, 1);
+        saveSpeakers(list);
+        renderSpeakers();
+        showToast('تم الحذف 🗑️');
+    }
+
+    function toggleAddForm() {
+        document.getElementById('add-form').classList.toggle('open');
+    }
+
+    // ===== ADMIN AUTH =====
+    function checkAdminPass() {
+        const val = document.getElementById('admin-pass-input').value;
+        if (val === ADMIN_PASSWORD) {
+            isAdmin = true;
+            document.getElementById('admin-lock').style.display = 'none';
+            document.getElementById('admin-content').style.display = 'block';
+            document.getElementById('logout-btn').style.display = 'inline-flex';
+            renderSpeakers();
+            showToast('مرحباً يا مشرف 👋');
+        } else {
+            document.getElementById('lock-error').style.display = 'block';
+            document.getElementById('admin-pass-input').value = '';
+        }
+    }
+
+    function adminLogout() {
+        isAdmin = false;
+        document.getElementById('admin-lock').style.display = 'block';
+        document.getElementById('admin-content').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'none';
+        document.getElementById('admin-pass-input').value = '';
+        document.getElementById('lock-error').style.display = 'none';
+        renderSpeakers();
     }
 
     // ===== TOAST =====
@@ -937,59 +745,46 @@
         document.getElementById('status-text').innerText = msg;
         toast.classList.remove('hidden');
         clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => { toast.classList.add('hidden'); }, 2500);
+        toastTimer = setTimeout(() => toast.classList.add('hidden'), 2500);
     }
 
     // ===== SHARE =====
     async function shareData(title, text) {
         if (navigator.share) {
-            try { await navigator.share({ title, text }); } catch (e) {}
+            try { await navigator.share({ title, text }); } catch(e) {}
         } else {
             const blob = new Blob([text], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = url;
-            a.download = `${title}.txt`;
-            a.click();
+            a.href = url; a.download = `${title}.txt`; a.click();
             showToast('تم تحميل الملف 📁');
         }
     }
-
     function shareInventory() {
         const name = document.getElementById('user-name').value || 'عضو مجهول';
-        let msg = `📝 جرد رابعة الشامل\n👤 الاسم: ${name}\n📅 التاريخ: ${new Date().toLocaleDateString('ar')}\n\n`;
-        const sections = [
-            { id: 'res-table', title: '🔴 الاستياء', h: ['الطرف', 'الموقف', 'الأثر', 'دوري'] },
-            { id: 'fear-table', title: '🌑 المخاوف', h: ['الخوف', 'السبب'] },
-            { id: 'sex-table', title: '💎 الأذى الجنسي', h: ['شخص', 'موقف', 'أثر', 'إصلاح'] },
-            { id: 'harm-table', title: '⚠️ السلوك المؤذي', h: ['شخص', 'فعل', 'أثر', 'تعويض'] }
-        ];
-        sections.forEach(s => {
-            const rows = Array.from(document.querySelectorAll(`#${s.id} tr`));
+        let msg = `📝 جرد رابعة الشامل\n👤 الاسم: ${name}\n📅 ${new Date().toLocaleDateString('ar')}\n\n`;
+        [
+            { id:'res-table', title:'🔴 الاستياء' },
+            { id:'fear-table', title:'🌑 المخاوف' },
+            { id:'sex-table', title:'💎 الأذى الجنسي' },
+            { id:'harm-table', title:'⚠️ السلوك المؤذي' }
+        ].forEach(s => {
             msg += `--- ${s.title} ---\n`;
-            rows.forEach((r, i) => {
+            Array.from(document.querySelectorAll(`#${s.id} tr`)).forEach((r,i) => {
                 const cells = Array.from(r.querySelectorAll('textarea')).map(t => t.value);
-                if (cells.join('').trim() !== '') msg += `${i + 1}. ` + cells.join(' | ') + '\n';
+                if (cells.join('').trim()) msg += `${i+1}. ` + cells.join(' | ') + '\n';
             });
             msg += '\n';
         });
         shareData('جرد رابعة', msg);
     }
-
     function shareNightly() {
         const name = document.getElementById('user-name').value || 'عضو مجهول';
-        const questions = [
-            'هل كنا مستائين، أو أنانيين، أو غير مخلصين، أو خائفين؟',
-            'هل نحن مدينون باعتذار؟',
-            'هل احتفظنا بشيء لأنفسنا كان يجب مناقشته مع شخص آخر فوراً؟',
-            'هل كنا عطوفين ومحبين تجاه الجميع؟',
-            'ما الذي كان يمكننا فعله بشكل أفضل؟',
-            'هل كنا نفكر في أنفسنا معظم الوقت؟ أم فيما يمكننا تقديمه للآخرين؟'
-        ];
-        let msg = `🌙 مراجعة الليلة البنّاءة\n👤 الاسم: ${name}\n📅 التاريخ: ${new Date().toLocaleDateString('ar')}\n\n`;
+        const qs = ['هل كنا مستائين؟','هل نحن مدينون باعتذار؟','هل احتفظنا بشيء؟','هل كنا عطوفين؟','ما الذي كان يمكننا فعله؟','هل كنا نفكر في أنفسنا؟'];
+        let msg = `🌙 مراجعة الليلة\n👤 ${name}\n📅 ${new Date().toLocaleDateString('ar')}\n\n`;
         for (let i = 1; i <= 6; i++) {
-            const a = document.getElementById('q' + i).value;
-            if (a.trim() !== '') msg += `${i}. ${questions[i-1]}\nالجواب: ${a}\n\n`;
+            const a = document.getElementById('q'+i).value;
+            if (a.trim()) msg += `${i}. ${qs[i-1]}\n${a}\n\n`;
         }
         shareData('مراجعة الليلة', msg);
     }
@@ -997,27 +792,24 @@
     // ===== INIT =====
     window.onload = () => {
         if (localStorage.getItem('rhino-theme') === 'true') document.body.classList.add('dark');
-
         document.getElementById('user-name').value = localStorage.getItem('rhino-user-name') || '';
         document.getElementById('user-role').value = localStorage.getItem('rhino-user-role') || '';
         updateWelcomeText();
         initSteps();
 
-        // Restore inventory
         const inv = JSON.parse(localStorage.getItem('rhino-inventory-v3'));
         if (inv) {
             Object.keys(inv).forEach(id => {
                 inv[id].forEach(row => addRow(id, row.length, row));
-                if (inv[id].length === 0) addRow(id, id === 'fear-table' ? 2 : 4);
+                if (!inv[id].length) addRow(id, id==='fear-table'?2:4);
             });
         } else {
-            addRow('res-table', 4); addRow('fear-table', 2); addRow('sex-table', 4); addRow('harm-table', 4);
+            addRow('res-table',4); addRow('fear-table',2); addRow('sex-table',4); addRow('harm-table',4);
         }
 
-        // Restore nightly
         const savedNightly = JSON.parse(localStorage.getItem('rhino-nightly-data'));
         if (savedNightly) {
-            for (let i = 1; i <= 6; i++) document.getElementById('q' + i).value = savedNightly['q' + i] || '';
+            for (let i = 1; i <= 6; i++) document.getElementById('q'+i).value = savedNightly['q'+i] || '';
             document.getElementById('timer-alert').style.display = 'flex';
         }
 
@@ -1026,3 +818,4 @@
 </script>
 </body>
 </html>
+

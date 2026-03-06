@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة وحيد القرن الأبيض العربي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f2027;
+            --secondary: #1a3a4a;
+            --accent: #00c9a7;
+            --accent2: #ffd166;
+            --danger: #ef476f;
+            --info: #118ab2;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #1a2332;
+            --text-muted: #6b7a8d;
+            --border: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow: 0 8px 30px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.dark {
+            --bg: #0d1117;
+            --card: #161b22;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+            --border: #30363d;
+            --shadow: 0 8px 30px rgba(0,0,0,0.4);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+
+        /* ===== HERO HEADER ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #0a3d5c 100%);
+            padding: 40px 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,201,167,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,209,102,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-title-block { flex: 1; min-width: 260px; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,201,167,0.15);
+            border: 1px solid rgba(0,201,167,0.3);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .hero-sub {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .hero-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-theme {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-theme:hover { background: rgba(255,255,255,0.18); transform: scale(1.05); }
+
+        /* ===== USER BAR ===== */
+        .user-bar {
+            max-width: 1100px;
+            margin: 20px auto 0;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .user-bar input,
+        .user-bar select {
+            flex: 1;
+            min-width: 220px;
+            padding: 13px 18px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .user-bar input::placeholder { color: rgba(255,255,255,0.45); }
+        .user-bar select option { background: var(--secondary); color: white; }
+        .user-bar input:focus,
+        .user-bar select:focus {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* ===== WELCOME BANNER ===== */
+        .welcome-banner {
+            max-width: 1100px;
+            margin: 16px auto 0;
+            padding: 14px 20px;
+            background: rgba(0,201,167,0.15);
+            border: 1px solid rgba(0,201,167,0.3);
+            border-radius: var(--radius-sm);
+            color: #a8f5e5;
+            font-size: 0.95rem;
+            display: none;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== NAV TABS ===== */
+        .nav-tabs {
+            max-width: 1100px;
+            margin: 20px auto 0;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            padding-bottom: 0;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs::-webkit-scrollbar { display: none; }
+
+        .nav-tab {
+            padding: 12px 22px;
+            border: none;
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.6);
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            transition: var(--transition);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-tab:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); }
+
+        .nav-tab.active {
+            background: var(--bg);
+            color: var(--text);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        body.dark .nav-tab.active { background: var(--bg); color: var(--text); }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        .section { display: none; animation: fadeUp 0.35s ease; }
+        .section.active { display: block; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        /* ===== GUIDE SECTION ===== */
+        .guide-hero {
+            background: linear-gradient(135deg, #0f2027, #1a3a4a);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-hero::before {
+            content: '🦏';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.06;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .guide-hero h1 {
+            font-family: 'Amiri', serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .guide-hero p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .info-card {
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: var(--card);
+        }
+
+        .info-card-icon {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .info-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+        .info-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* ===== STEPS SECTION ===== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .step-btn {
+            padding: 10px 6px;
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            color: var(--text-muted);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .step-btn:hover { border-color: var(--accent); color: var(--text); }
+        .step-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        .field-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .field-input {
+            width: 100%;
+            padding: 13px 16px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+            margin-bottom: 14px;
+        }
+
+        .field-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,201,167,0.12); }
+
+        textarea.field-input {
+            min-height: 350px;
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+        /* ===== TABLE SECTION ===== */
+        .table-section { margin-bottom: 32px; }
+
+        .table-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .table-label {
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+
+        table { width: 100%; border-collapse: collapse; min-width: 500px; }
+
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: rgba(255,255,255,0.9);
+            padding: 12px 16px;
+            text-align: right;
+            font-size: 0.82rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        td {
+            border-bottom: 1px solid var(--border);
+            padding: 4px;
+            vertical-align: top;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: rgba(0,201,167,0.03); }
+
+        td textarea {
+            width: 100%;
+            min-height: 60px;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.88rem;
+            padding: 10px 12px;
+            resize: none;
+            outline: none;
+            line-height: 1.6;
+        }
+
+        td textarea:focus { background: rgba(0,201,167,0.05); }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: none;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn:active { transform: translateY(0); }
+
+        .btn-primary { background: var(--accent); color: #0d1117; }
+        .btn-info { background: var(--info); color: white; }
+        .btn-danger { background: var(--danger); color: white; }
+        .btn-ghost { background: transparent; border: 1.5px solid var(--border); color: var(--text-muted); }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-sm { padding: 7px 14px; font-size: 0.8rem; }
+
+        /* ===== NIGHTLY SECTION ===== */
+        .timer-alert {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            background: rgba(239,71,111,0.1);
+            border: 1px solid rgba(239,71,111,0.3);
+            border-radius: var(--radius-sm);
+            color: var(--danger);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .question-block:last-of-type { border-bottom: none; }
+
+        .question-label {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--text);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .q-num {
+            min-width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: #0d1117;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 900;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        textarea.q-input {
+            width: 100%;
+            min-height: 80px;
+            padding: 13px 16px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem;
+            resize: vertical;
+            outline: none;
+            transition: var(--transition);
+            line-height: 1.7;
+        }
+
+        textarea.q-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0,201,167,0.1);
+        }
+
+        /* ===== STATUS BAR ===== */
+        .status-toast {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: var(--secondary);
+            color: rgba(255,255,255,0.85);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: var(--shadow);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: toastIn 0.3s ease;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+
+        /* ===== UTILITIES ===== */
+        .hidden { display: none !important; }
+        .mt-16 { margin-top: 16px; }
+        .flex-end { display: flex; justify-content: flex-end; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .hero { padding: 24px 16px 0; }
+            .main { padding: 20px 14px 60px; }
+            .card { padding: 18px; }
+            .guide-hero { padding: 26px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HERO HEADER ===== -->
+<header class="hero">
+    <div class="hero-top">
+        <div class="hero-title-block">
+            <div class="hero-badge">🦏 برنامج التعافي الشامل</div>
+            <h1 class="hero-title">منصة وحيد القرن الأبيض العربي</h1>
+            <p class="hero-sub">المنهج المتكامل: جرد الماضي (رابعة) وصيانة الحاضر (الليلة)</p>
+        </div>
+        <div class="hero-controls">
+            <button class="btn-theme" onclick="toggleTheme()" title="تبديل المظهر">🌗</button>
+        </div>
+    </div>
+
+    <div class="user-bar">
+        <input type="text" id="user-name" placeholder="✍️ اكتب اسمك هنا..." oninput="saveUserInfo()">
+        <select id="user-role" onchange="handleRoleChange()">
+            <option value="">👤 اختر دورك في البرنامج</option>
+            <option value="مشرف">مشرف (Sponsor)</option>
+            <option value="متوجه">متوجه (Sponsee)</option>
+        </select>
+    </div>
+
+    <div id="welcome-banner" class="welcome-banner"></div>
+
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="showSection('guide')" id="nav-guide">📖 دليل العمل</button>
+        <button class="nav-tab" onclick="showSection('steps')" id="nav-steps">🦏 الخطوات الـ 12</button>
+        <button class="nav-tab" onclick="showSection('inventory')" id="nav-inventory">📝 جرد رابعة</button>
+        <button class="nav-tab" onclick="showSection('nightly')" id="nav-nightly">🌙 مراجعة الليلة</button>
+    </nav>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+
+    <!-- GUIDE -->
+    <div id="section-guide" class="section active">
+        <div class="guide-hero">
+            <h1>دليل وحيد القرن الأبيض العربي</h1>
+            <p>طريق التعافي الحقيقي يبدأ بالصدق مع النفس</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-icon">✍️</div>
+                <h4>الوضوح والصدق</h4>
+                <p>اكتب الأسماء والمواقف بصدق تام. الكتابة هي مرآة الروح ومفتاح التحرر الحقيقي.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🔒</div>
+                <h4>الخصوصية التامة</h4>
+                <p>بياناتك تُحفظ محلياً على جهازك فقط. لا يصل إليها أحد دون إذنك المباشر.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">📤</div>
+                <h4>المشاركة مع المشرف</h4>
+                <p>استخدم أزرار المشاركة لإرسال عملك لمشرفك عند الانتهاء من كل مرحلة.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🌙</div>
+                <h4>مراجعة الليلة</h4>
+                <p>تُمسح إجابات المراجعة تلقائياً بعد ساعتين لضمان خصوصيتك ونظافة تجربتك.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEPS -->
+    <div id="section-steps" class="section">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <div class="card-title-icon" style="background: rgba(0,201,167,0.1); color: var(--accent);">🦏</div>
+                    العمل على الخطوات الـ 12
+                </div>
+            </div>
+            <div class="steps-grid" id="stepsMenu"></div>
+            <div>
+                <div class="field-label">عنوان الخطوة</div>
+                <input type="text" class="field-input" id="step-title" placeholder="عنوان الخطوة الحالية..." oninput="saveStepsData()">
+                <div class="field-label">الكتابة والتأمل</div>
+                <textarea class="field-input" id="step-body" placeholder="ابدأ الكتابة هنا..." oninput="saveStepsData()"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- INVENTORY -->
+    <div id="section-inventory" class="section">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <div class="card-title-icon" style="background: rgba(239,71,111,0.1); color: var(--danger);">📝</div>
+                    جرد رابعة: تحليل الماضي
+                </div>
+                <button class="btn btn-info btn-sm" onclick="shareInventory()">📤 مشاركة الجرد كاملاً</button>
+            </div>
+
+            <!-- Resentment -->
+            <div class="table-section">
+                <div class="table-section-header">
+                    <div class="table-label">🔴 جدول الاستياء (Resentment)</div>
+                    <button class="btn btn-primary btn-sm" onclick="addRow('res-table', 4)">+ إضافة سطر</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>الطرف</th><th>الموقف</th><th>الأثر</th><th>دوري</th></tr></thead>
+                        <tbody id="res-table"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Fears -->
+            <div class="table-section">
+                <div class="table-section-header">
+                    <div class="table-label">🌑 جدول المخاوف (Fears)</div>
+                    <button class="btn btn-primary btn-sm" onclick="addRow('fear-table', 2)">+ إضافة سطر</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>ما هو الخوف؟</th><th>لماذا أشعر به؟ (السبب الكامن)</th></tr></thead>
+                        <tbody id="fear-table"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Sexual Harm -->
+            <div class="table-section">
+                <div class="table-section-header">
+                    <div class="table-label">💎 جرد الأذى الجنسي (Sexual Harm)</div>
+                    <button class="btn btn-primary btn-sm" onclick="addRow('sex-table', 4)">+ إضافة سطر</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>أشخاص</th><th>موقف</th><th>أثر / عيوب</th><th>الإصلاح المستقبلي</th></tr></thead>
+                        <tbody id="sex-table"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Harmful Behavior -->
+            <div class="table-section">
+                <div class="table-section-header">
+                    <div class="table-label">⚠️ جرد السلوك المؤذي (Harmful Behavior)</div>
+                    <button class="btn btn-primary btn-sm" onclick="addRow('harm-table', 4)">+ إضافة سطر</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>الشخص</th><th>الفعل المؤذي</th><th>الأثر</th><th>التعويضات</th></tr></thead>
+                        <tbody id="harm-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NIGHTLY -->
+    <div id="section-nightly" class="section">
+        <div id="timer-alert" class="timer-alert">
+            <span>⏱</span>
+            <span>سيتم مسح الإجابات تلقائياً بعد ساعتين لحماية خصوصيتك.</span>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <div class="card-title-icon" style="background: rgba(17,138,178,0.1); color: var(--info);">🌙</div>
+                    مراجعة الليلة البنّاءة
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="btn btn-info btn-sm" onclick="shareNightly()">📤 مشاركة المراجعة</button>
+                    <button class="btn btn-danger btn-sm" onclick="clearNightly()">🗑️ مسح الآن</button>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-label"><span class="q-num">1</span>هل كنا مستائين، أو أنانيين، أو غير مخلصين، أو خائفين؟</div>
+                <textarea class="q-input" id="q1" oninput="nightlyActivity()"></textarea>
+            </div>
+            <div class="question-block">
+                <div class="question-label"><span class="q-num">2</span>هل نحن مدينون باعتذار؟</div>
+                <textarea class="q-input" id="q2" oninput="nightlyActivity()"></textarea>
+            </div>
+            <div class="question-block">
+                <div class="question-label"><span class="q-num">3</span>هل احتفظنا بشيء لأنفسنا كان يجب مناقشته مع شخص آخر فوراً؟</div>
+                <textarea class="q-input" id="q3" oninput="nightlyActivity()"></textarea>
+            </div>
+            <div class="question-block">
+                <div class="question-label"><span class="q-num">4</span>هل كنا عطوفين ومحبين تجاه الجميع؟</div>
+                <textarea class="q-input" id="q4" oninput="nightlyActivity()"></textarea>
+            </div>
+            <div class="question-block">
+                <div class="question-label"><span class="q-num">5</span>ما الذي كان يمكننا فعله بشكل أفضل؟</div>
+                <textarea class="q-input" id="q5" oninput="nightlyActivity()"></textarea>
+            </div>
+            <div class="question-block" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+                <div class="question-label"><span class="q-num">6</span>هل كنا نفكر في أنفسنا معظم الوقت؟ أم فيما يمكننا تقديمه للآخرين؟</div>
+                <textarea class="q-input" id="q6" oninput="nightlyActivity()"></textarea>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- STATUS TOAST -->
+<div id="status-toast" class="status-toast hidden">
+    <span class="dot"></span>
+    <span id="status-text">تم الحفظ</span>
+</div>
+
+<script>
+    let currentStep = 1;
+    const EXPIRY_TIME = 2 * 60 * 60 * 1000;
+    let toastTimer;
+
+    // ===== USER INFO =====
+    function saveUserInfo() {
+        localStorage.setItem('rhino-user-name', document.getElementById('user-name').value);
+        updateWelcomeText();
+        showToast('تم الحفظ التلقائي ✅');
+    }
+
+    function handleRoleChange() {
+        localStorage.setItem('rhino-user-role', document.getElementById('user-role').value);
+        updateWelcomeText();
+    }
+
+    function updateWelcomeText() {
+        const name = document.getElementById('user-name').value || 'يا بطل';
+        const role = document.getElementById('user-role').value;
+        const banner = document.getElementById('welcome-banner');
+        if (role) {
+            banner.innerHTML = `✨ أهلاً بك يا <strong>${name}</strong> بصفتك <strong>${role}</strong> في طريق التعافي.`;
+            banner.style.display = 'block';
+        } else {
+            banner.style.display = 'none';
+        }
+    }
+
+    // ===== NAVIGATION =====
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+        document.getElementById('section-' + id).classList.add('active');
+        document.getElementById('nav-' + id).classList.add('active');
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('rhino-theme', document.body.classList.contains('dark'));
+    }
+
+    // ===== STEPS =====
+    function initSteps() {
+        const menu = document.getElementById('stepsMenu');
+        menu.innerHTML = '';
+        for (let i = 1; i <= 12; i++) {
+            const b = document.createElement('button');
+            b.className = 'step-btn';
+            b.innerText = 'الخطوة ' + i;
+            b.onclick = () => loadStep(i);
+            menu.appendChild(b);
+        }
+        loadStep(1);
+    }
+
+    function loadStep(n) {
+        currentStep = n;
+        document.querySelectorAll('.step-btn').forEach((b, i) => b.classList.toggle('active', i === n - 1));
+        document.getElementById('step-title').value = localStorage.getItem(`step-t-${n}`) || '';
+        document.getElementById('step-body').value = localStorage.getItem(`step-b-${n}`) || '';
+    }
+
+    function saveStepsData() {
+        localStorage.setItem(`step-t-${currentStep}`, document.getElementById('step-title').value);
+        localStorage.setItem(`step-b-${currentStep}`, document.getElementById('step-body').value);
+        showToast('تم الحفظ التلقائي ✅');
+    }
+
+    // ===== INVENTORY =====
+    function addRow(tableId, cols, values = []) {
+        const tbody = document.getElementById(tableId);
+        const tr = document.createElement('tr');
+        for (let i = 0; i < cols; i++) {
+            const td = document.createElement('td');
+            const ta = document.createElement('textarea');
+            ta.value = values[i] || '';
+            ta.placeholder = '...';
+            ta.oninput = saveInventory;
+            td.appendChild(ta);
+            tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+        saveInventory();
+    }
+
+    function saveInventory() {
+        const tables = ['res-table', 'fear-table', 'sex-table', 'harm-table'];
+        const data = {};
+        tables.forEach(id => {
+            const rows = [];
+            document.querySelectorAll(`#${id} tr`).forEach(tr => {
+                const cells = Array.from(tr.querySelectorAll('textarea')).map(ta => ta.value);
+                if (cells.some(c => c.trim() !== '')) rows.push(cells);
+            });
+            data[id] = rows;
+        });
+        localStorage.setItem('rhino-inventory-v3', JSON.stringify(data));
+        showToast('تم الحفظ التلقائي ✅');
+    }
+
+    // ===== NIGHTLY =====
+    function nightlyActivity() {
+        if (!localStorage.getItem('nightly-start')) localStorage.setItem('nightly-start', Date.now());
+        const answers = {};
+        for (let i = 1; i <= 6; i++) answers['q' + i] = document.getElementById('q' + i).value;
+        localStorage.setItem('rhino-nightly-data', JSON.stringify(answers));
+        document.getElementById('timer-alert').style.display = 'flex';
+        showToast('تم الحفظ التلقائي ✅');
+    }
+
+    function clearNightly() {
+        if (!confirm('سيتم مسح مراجعة الليلة تماماً، هل أنت متأكد؟')) return;
+        localStorage.removeItem('rhino-nightly-data');
+        localStorage.removeItem('nightly-start');
+        for (let i = 1; i <= 6; i++) document.getElementById('q' + i).value = '';
+        document.getElementById('timer-alert').style.display = 'none';
+        showToast('تم مسح المراجعة 🗑️');
+    }
+
+    function checkExpiry() {
+        const start = localStorage.getItem('nightly-start');
+        if (start && Date.now() - start > EXPIRY_TIME) {
+            localStorage.removeItem('rhino-nightly-data');
+            localStorage.removeItem('nightly-start');
+            location.reload();
+        }
+    }
+
+    // ===== TOAST =====
+    function showToast(msg) {
+        const toast = document.getElementById('status-toast');
+        document.getElementById('status-text').innerText = msg;
+        toast.classList.remove('hidden');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => { toast.classList.add('hidden'); }, 2500);
+    }
+
+    // ===== SHARE =====
+    async function shareData(title, text) {
+        if (navigator.share) {
+            try { await navigator.share({ title, text }); } catch (e) {}
+        } else {
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title}.txt`;
+            a.click();
+            showToast('تم تحميل الملف 📁');
+        }
+    }
+
+    function shareInventory() {
+        const name = document.getElementById('user-name').value || 'عضو مجهول';
+        let msg = `📝 جرد رابعة الشامل\n👤 الاسم: ${name}\n📅 التاريخ: ${new Date().toLocaleDateString('ar')}\n\n`;
+        const sections = [
+            { id: 'res-table', title: '🔴 الاستياء', h: ['الطرف', 'الموقف', 'الأثر', 'دوري'] },
+            { id: 'fear-table', title: '🌑 المخاوف', h: ['الخوف', 'السبب'] },
+            { id: 'sex-table', title: '💎 الأذى الجنسي', h: ['شخص', 'موقف', 'أثر', 'إصلاح'] },
+            { id: 'harm-table', title: '⚠️ السلوك المؤذي', h: ['شخص', 'فعل', 'أثر', 'تعويض'] }
+        ];
+        sections.forEach(s => {
+            const rows = Array.from(document.querySelectorAll(`#${s.id} tr`));
+            msg += `--- ${s.title} ---\n`;
+            rows.forEach((r, i) => {
+                const cells = Array.from(r.querySelectorAll('textarea')).map(t => t.value);
+                if (cells.join('').trim() !== '') msg += `${i + 1}. ` + cells.join(' | ') + '\n';
+            });
+            msg += '\n';
+        });
+        shareData('جرد رابعة', msg);
+    }
+
+    function shareNightly() {
+        const name = document.getElementById('user-name').value || 'عضو مجهول';
+        const questions = [
+            'هل كنا مستائين، أو أنانيين، أو غير مخلصين، أو خائفين؟',
+            'هل نحن مدينون باعتذار؟',
+            'هل احتفظنا بشيء لأنفسنا كان يجب مناقشته مع شخص آخر فوراً؟',
+            'هل كنا عطوفين ومحبين تجاه الجميع؟',
+            'ما الذي كان يمكننا فعله بشكل أفضل؟',
+            'هل كنا نفكر في أنفسنا معظم الوقت؟ أم فيما يمكننا تقديمه للآخرين؟'
+        ];
+        let msg = `🌙 مراجعة الليلة البنّاءة\n👤 الاسم: ${name}\n📅 التاريخ: ${new Date().toLocaleDateString('ar')}\n\n`;
+        for (let i = 1; i <= 6; i++) {
+            const a = document.getElementById('q' + i).value;
+            if (a.trim() !== '') msg += `${i}. ${questions[i-1]}\nالجواب: ${a}\n\n`;
+        }
+        shareData('مراجعة الليلة', msg);
+    }
+
+    // ===== INIT =====
+    window.onload = () => {
+        if (localStorage.getItem('rhino-theme') === 'true') document.body.classList.add('dark');
+
+        document.getElementById('user-name').value = localStorage.getItem('rhino-user-name') || '';
+        document.getElementById('user-role').value = localStorage.getItem('rhino-user-role') || '';
+        updateWelcomeText();
+        initSteps();
+
+        // Restore inventory
+        const inv = JSON.parse(localStorage.getItem('rhino-inventory-v3'));
+        if (inv) {
+            Object.keys(inv).forEach(id => {
+                inv[id].forEach(row => addRow(id, row.length, row));
+                if (inv[id].length === 0) addRow(id, id === 'fear-table' ? 2 : 4);
+            });
+        } else {
+            addRow('res-table', 4); addRow('fear-table', 2); addRow('sex-table', 4); addRow('harm-table', 4);
+        }
+
+        // Restore nightly
+        const savedNightly = JSON.parse(localStorage.getItem('rhino-nightly-data'));
+        if (savedNightly) {
+            for (let i = 1; i <= 6; i++) document.getElementById('q' + i).value = savedNightly['q' + i] || '';
+            document.getElementById('timer-alert').style.display = 'flex';
+        }
+
+        setInterval(checkExpiry, 60000);
+    };
+</script>
+</body>
+</html>
